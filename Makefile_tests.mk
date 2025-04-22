@@ -7,6 +7,7 @@ SV	= background
 # --server can be 'mock' (default, ,background' (spawned) and 'external' real one given by config file.
 OPT	= -v  --log-level=$(L) --server=$(SV) -r P --id=44
 OPT1	= -v --log-level=$(L) --server=external
+DEBUG_OPT	= -v  --log-level=$(L) -r fEP -v -ls
 T	= 
 test: test1 test2 test5 test13 test14 test10
 
@@ -46,7 +47,7 @@ test7:
 	$(PYTEST) $(OPT) tests/serv/test_httpclientpool.py -k 'not _csdb' $(T)
 
 test8:
-	$(PYTEST) $(OPT) tests/test_pal.py -k '_http and not _csdb and _server' $(T)
+	$(PYTEST) $(DEBUG_OPT) tests/test_pal.py -k '_http and not _csdb and _server' $(T)
 
 test9:
 	$(PYTEST) $(OPT) tests/test_dataset.py -k '_mqtt' $(T)

@@ -2,6 +2,7 @@
 import threading
 from ..dataset.serializable import serialize
 from ..dataset.deserialize import deserialize
+from ..dataset.testproducts import get_demo_product
 from ..dataset.classes import Class_Look_Up
 from ..utils.getconfig import getConfig
 from ..utils.common import trbk, lls
@@ -668,8 +669,14 @@ def get_service_method(method):
     return service, serviceName
 
 def cls2jsn(clsn, namespace):
-    obj = namespace[clsn]()
-    # return json.dumps(obj.zInfo, ensure_ascii=asci, indent=2)
+    if 0: # 'Demo' in clsn:
+        #  get instance attrs
+        obj = get_demo_product()
+        # __import__('pdb').set_trace()
+    else:
+        obj = namespace[clsn]()
+        # return json.dumps(obj.zInfo, ensure_ascii=asci, indent=2)
+
     return obj.serialized(indent=2)
 
 def add_a_dataType(full_name, jsn, client, urlup):
@@ -718,7 +725,7 @@ def upload_defintion(full_cls, urlcsdb,
     else:
         alist = False
         fs = [full_cls]
-    #__import__("pdb").set_trace()
+    # __import__("pdb").set_trace()
     
     # upload
     for f in fs:

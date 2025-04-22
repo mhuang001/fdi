@@ -3,7 +3,6 @@ from .product import Product
 from .baseproduct import BaseProduct
 from .numericparameter import NumericParameter
 from .dateparameter import DateParameter
-from .stringparameter import StringParameter
 from .datatypes import Vector
 from .dataset import CompositeDataset
 from .tabledataset import TableDataset
@@ -12,8 +11,10 @@ from ..pal.context import Context, MapContext
 from ..pal.productref import ProductRef
 from ..utils.loadfiles import loadMedia
 from .finetime import FineTime
+from .unstructureddataset import UnstructuredDataset
 
 import copy
+import json
 from math import sin, cos, sqrt
 import random
 from os import path as op
@@ -132,6 +133,40 @@ def makeCal2D(width=11, height=11):
     return z
 
 
+# https://goessner.articles/JsonPath/
+BookStore = """{ "store": {
+    "book": [
+      { "category": "reference",
+        "author": "Nigel Rees",
+        "title": "Sayings of the Century",
+        "price": 8.95
+      },
+      { "category": "fiction",
+        "author": "Evelyn Waugh",
+        "title": "Sword of Honour",
+        "price": 12.99
+      },
+      { "category": "fiction",
+        "author": "Herman Melville",
+        "title": "Moby Dick",
+        "isbn": "0-553-21311-3",
+        "price": 8.99
+      },
+      { "category": "fiction",
+        "author": "J. R. R. Tolkien",
+        "title": "The Lord of the Rings",
+        "isbn": "0-395-19395-8",
+        "price": 22.99
+      }
+    ],
+    "bicycle": {
+      "color": "red",
+      "price": 19.95
+    }
+  }
+}"""
+
+
 class DemoProduct(MapContext):
     def __init__(self, *args, **kwds):
 
@@ -139,6 +174,29 @@ class DemoProduct(MapContext):
         self.zInfo['name'] = 'DemoProduct'
         self.zInfo['description'] = 'Test class %s.' % self.zInfo['name']
         self.zInfo['metadata']['type']['default'] = self.zInfo['name']
+        self.zInfo['metadata']['speed'] = {
+                'data_type': 'float',
+                'description': 'Parameter',
+                'default': 0.0,
+                'unit': 'deg',
+                'valid': '',
+        }
+
+        self.zInfo['metadata']['ra'] = {
+                'data_type': 'float',
+                'description': 'Parameter',
+                'default': 0.0,
+                'unit': 'deg',
+                'valid': '',
+        }
+
+        self.zInfo['metadata']['dec'] = {
+                'data_type': 'float',
+                'description': 'Parameter',
+                'default': 0.0,
+                'unqit': 'deg',
+                'valid': '',
+        }
 
 
 def get_demo_product(desc=''):
@@ -192,7 +250,18 @@ def get_demo_product(desc=''):
 
     prodx = DemoProduct(desc if desc else 'A complex product for demo/test.')
     prodx.creator = 'Frankenstein'
-    prodx.version = '2'
+    prodx.version = '3'
+    # add ra, dec for testing
+    prodx.meta['ra'] = NumericParameter(
+        description='Right Ascension',
+        value=123.4567,
+        unit='degree')
+
+    prodx.meta['dec'] = NumericParameter(
+        description='Declination',
+        value=89.0,
+        unit='degree')
+
     # add a parameter with validity descriptors to the product
     prodx.meta['speed'] = NumericParameter(
         description='an extra param',
@@ -251,6 +320,10 @@ def get_demo_product(desc=''):
     setattr(a4, a11, a12)
     # put the arraydataset to the product with a name a3.
     prodx[a3] = a4
+
+    # unstructured
+    u = UnstructuredDataset(json.loads(BookStore))
+    prodx['BookStore'] = u
 
     # an image as Browse
     fname = 'imageBlue.png'

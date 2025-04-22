@@ -19,6 +19,37 @@ out_tree = """tree out_tree
 │   ├── calibration                  <ArrayDataset> [11, 11]
 │   └── dset                                           <str>
 ├── Environment Temperature               <ArrayDataset> [7]
+├── BookStore                          <UnstructuredDataset>
+│   ├── meta                                      <MetaData>
+│   │   └── listeners                          <ListenerSet>
+│   └── data                                          <dict>
+│       └── store                                     <dict>
+│           ├── book                                  <list>
+│           │   ├── 0                                 <dict>
+│           │   │   ├── category                       <str>
+│           │   │   ├── author                         <str>
+│           │   │   ├── title                          <str>
+│           │   │   └── price                        <float>
+│           │   ├── 1                                 <dict>
+│           │   │   ├── category                       <str>
+│           │   │   ├── author                         <str>
+│           │   │   ├── title                          <str>
+│           │   │   └── price                        <float>
+│           │   ├── 2                                 <dict>
+│           │   │   ├── category                       <str>
+│           │   │   ├── author                         <str>
+│           │   │   ├── title                          <str>
+│           │   │   ├── isbn                           <str>
+│           │   │   └── price                        <float>
+│           │   └── 3                                 <dict>
+│           │       ├── category                       <str>
+│           │       ├── author                         <str>
+│           │       ├── title                          <str>
+│           │       ├── isbn                           <str>
+│           │       └── price                        <float>
+│           └── bicycle                               <dict>
+│               ├── color                              <str>
+│               └── price                            <float>
 ├── Browse                                <image/png> [5976]
 ├── refs                                      <RefContainer>
 │   ├── a_reference                             <ProductRef>
@@ -99,6 +130,22 @@ out_tree = """tree out_tree
 │   │   │       └── 0                                 <list>
 │   │   ├── unit                                       <str>
 │   │   └── typecode                              <NoneType>
+│   ├── ra                                           <float>
+│   │   ├── description                                <str>
+│   │   ├── type                                       <str>
+│   │   ├── default                               <NoneType>
+│   │   ├── value                                    <float>
+│   │   ├── valid                                 <NoneType>
+│   │   ├── unit                                       <str>
+│   │   └── typecode                              <NoneType>
+│   ├── dec                                          <float>
+│   │   ├── description                                <str>
+│   │   ├── type                                       <str>
+│   │   ├── default                               <NoneType>
+│   │   ├── value                                    <float>
+│   │   ├── valid                                 <NoneType>
+│   │   ├── unit                                       <str>
+│   │   └── typecode                              <NoneType>
 │   └── listeners                              <ListenerSet>
 ├── measurements                          <CompositeDataset>
 │   ├── meta                                      <MetaData>
@@ -149,6 +196,67 @@ out_tree = """tree out_tree
 │   ├── calibration                  <ArrayDataset> [11, 11]
 │   └── dset                                           <str>
 ├── Environment Temperature               <ArrayDataset> [7]
+├── BookStore                          <UnstructuredDataset>
+│   ├── meta                                      <MetaData>
+│   │   ├── description                             <string>
+│   │   │   ├── description                            <str>
+│   │   │   ├── default                                <str>
+│   │   │   ├── value                                  <str>
+│   │   │   ├── valid                             <NoneType>
+│   │   │   └── typecode                               <str>
+│   │   ├── type                                    <string>
+│   │   │   ├── description                            <str>
+│   │   │   ├── default                                <str>
+│   │   │   ├── value                                  <str>
+│   │   │   ├── valid                             <NoneType>
+│   │   │   └── typecode                               <str>
+│   │   ├── doctype                                 <string>
+│   │   │   ├── description                            <str>
+│   │   │   ├── default                           <NoneType>
+│   │   │   ├── value                             <NoneType>
+│   │   │   ├── valid                             <NoneType>
+│   │   │   └── typecode                               <str>
+│   │   ├── version                                 <string>
+│   │   │   ├── description                            <str>
+│   │   │   ├── default                                <str>
+│   │   │   ├── value                                  <str>
+│   │   │   ├── valid                             <NoneType>
+│   │   │   └── typecode                               <str>
+│   │   ├── FORMATV                                 <string>
+│   │   │   ├── description                            <str>
+│   │   │   ├── default                                <str>
+│   │   │   ├── value                                  <str>
+│   │   │   ├── valid                             <NoneType>
+│   │   │   └── typecode                               <str>
+│   │   └── listeners                          <ListenerSet>
+│   └── data                                          <dict>
+│       └── store                                     <dict>
+│           ├── book                                  <list>
+│           │   ├── 0                                 <dict>
+│           │   │   ├── category                       <str>
+│           │   │   ├── author                         <str>
+│           │   │   ├── title                          <str>
+│           │   │   └── price                        <float>
+│           │   ├── 1                                 <dict>
+│           │   │   ├── category                       <str>
+│           │   │   ├── author                         <str>
+│           │   │   ├── title                          <str>
+│           │   │   └── price                        <float>
+│           │   ├── 2                                 <dict>
+│           │   │   ├── category                       <str>
+│           │   │   ├── author                         <str>
+│           │   │   ├── title                          <str>
+│           │   │   ├── isbn                           <str>
+│           │   │   └── price                        <float>
+│           │   └── 3                                 <dict>
+│           │       ├── category                       <str>
+│           │       ├── author                         <str>
+│           │       ├── title                          <str>
+│           │       ├── isbn                           <str>
+│           │       └── price                        <float>
+│           └── bicycle                               <dict>
+│               ├── color                              <str>
+│               └── price                            <float>
 ├── Browse                                <image/png> [5976]
 ├── refs                                      <RefContainer>
 │   ├── a_reference                             <ProductRef>
@@ -261,6 +369,22 @@ out_tree = """tree out_tree
 |   |   |       \__ 0                                 <list>
 |   |   |__ unit                                       <str>
 |   |   \__ typecode                              <NoneType>
+|   |__ ra                                           <float>
+|   |   |__ description                                <str>
+|   |   |__ type                                       <str>
+|   |   |__ default                               <NoneType>
+|   |   |__ value                                    <float>
+|   |   |__ valid                                 <NoneType>
+|   |   |__ unit                                       <str>
+|   |   \__ typecode                              <NoneType>
+|   |__ dec                                          <float>
+|   |   |__ description                                <str>
+|   |   |__ type                                       <str>
+|   |   |__ default                               <NoneType>
+|   |   |__ value                                    <float>
+|   |   |__ valid                                 <NoneType>
+|   |   |__ unit                                       <str>
+|   |   \__ typecode                              <NoneType>
 |   \__ listeners                              <ListenerSet>
 |__ measurements                          <CompositeDataset>
 |   |__ meta                                      <MetaData>
@@ -311,6 +435,67 @@ out_tree = """tree out_tree
 |   |__ calibration                  <ArrayDataset> [11, 11]
 |   \__ dset                                           <str>
 |__ Environment Temperature               <ArrayDataset> [7]
+|__ BookStore                          <UnstructuredDataset>
+|   |__ meta                                      <MetaData>
+|   |   |__ description                             <string>
+|   |   |   |__ description                            <str>
+|   |   |   |__ default                                <str>
+|   |   |   |__ value                                  <str>
+|   |   |   |__ valid                             <NoneType>
+|   |   |   \__ typecode                               <str>
+|   |   |__ type                                    <string>
+|   |   |   |__ description                            <str>
+|   |   |   |__ default                                <str>
+|   |   |   |__ value                                  <str>
+|   |   |   |__ valid                             <NoneType>
+|   |   |   \__ typecode                               <str>
+|   |   |__ doctype                                 <string>
+|   |   |   |__ description                            <str>
+|   |   |   |__ default                           <NoneType>
+|   |   |   |__ value                             <NoneType>
+|   |   |   |__ valid                             <NoneType>
+|   |   |   \__ typecode                               <str>
+|   |   |__ version                                 <string>
+|   |   |   |__ description                            <str>
+|   |   |   |__ default                                <str>
+|   |   |   |__ value                                  <str>
+|   |   |   |__ valid                             <NoneType>
+|   |   |   \__ typecode                               <str>
+|   |   |__ FORMATV                                 <string>
+|   |   |   |__ description                            <str>
+|   |   |   |__ default                                <str>
+|   |   |   |__ value                                  <str>
+|   |   |   |__ valid                             <NoneType>
+|   |   |   \__ typecode                               <str>
+|   |   \__ listeners                          <ListenerSet>
+|   \__ data                                          <dict>
+|       \__ store                                     <dict>
+|           |__ book                                  <list>
+|           |   |__ 0                                 <dict>
+|           |   |   |__ category                       <str>
+|           |   |   |__ author                         <str>
+|           |   |   |__ title                          <str>
+|           |   |   \__ price                        <float>
+|           |   |__ 1                                 <dict>
+|           |   |   |__ category                       <str>
+|           |   |   |__ author                         <str>
+|           |   |   |__ title                          <str>
+|           |   |   \__ price                        <float>
+|           |   |__ 2                                 <dict>
+|           |   |   |__ category                       <str>
+|           |   |   |__ author                         <str>
+|           |   |   |__ title                          <str>
+|           |   |   |__ isbn                           <str>
+|           |   |   \__ price                        <float>
+|           |   \__ 3                                 <dict>
+|           |       |__ category                       <str>
+|           |       |__ author                         <str>
+|           |       |__ title                          <str>
+|           |       |__ isbn                           <str>
+|           |       \__ price                        <float>
+|           \__ bicycle                               <dict>
+|               |__ color                              <str>
+|               \__ price                            <float>
 |__ Browse                                <image/png> [5976]
 |__ refs                                      <RefContainer>
 |   |__ a_reference                             <ProductRef>

@@ -30,6 +30,7 @@ from fdi.pal.poolmanager import dbg_7types
 from fdi.testsupport.fixtures import set_ids, SHORT, make_ps
 # create logger
 
+# dbg_7types = 1
 
 def setuplogging():
     import logging
@@ -180,8 +181,9 @@ def test_upload_All_prod_defn(csdb_server):
     full_names = get_All_Products('Full_Class_Names')
     # full_names = ['fdi.dataset.products.Product',
     #              'svom.products.svomproduct.SVOMMapContext']
-
+    # full_names = ['fdi.dataset.testproducts.DemoProduct']
     namespace = Class_Look_Up
+    #__import__('pdb').set_trace()
     #from svom.products.projectclasses import Class_Look_Up as namespace
     upload_defintion(full_names, urlcsdb, client=client, namespace=namespace)
 
@@ -702,6 +704,7 @@ def upload_7products(csdb_server, tmp_prods):
     prds = tmp_prods
 
     all_data = []
+    #__import__('pdb').set_trace()
 
     for i, prd in enumerate(prds):
         cls = prd.__class__.__name__
