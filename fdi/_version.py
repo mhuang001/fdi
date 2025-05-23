@@ -1,8 +1,9 @@
-__version_info__ = (2, 8, 2)
+__version_info__ = (2, 8, 3)
 __version__ = '.'.join(map(str, __version_info__))
 __revision__ = '2.4.0.1-1-g07a0c44'
 
-# DemoProjuct has ra, dec, and bookstore.
+# fix bugs in jsonpath test.
+# 2.8.2 DemoProjuct has ra, dec, and bookstore.
 # 2.8.2 fix query on pool on server. using traceback_with_variables
 # 2.8.1 pdb in pool code removed
 # 2.8.0 tagged for ops-v1

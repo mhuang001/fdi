@@ -2693,8 +2693,8 @@ def do_jsonPath(UDSET):
         # - ['J. R. R. Tolkien']
         # + ['Nigel Rees', 'Evelyn Waugh', 'Herman Melville', 'J. R. R. Tolkien']
         #
-        # m = u.jsonPath('$..book[?(@.`len` - 1)]', val='context')
-        # assert list(x.value['author'] for x in m) == ['J. R. R. Tolkien']
+        m = u.jsonPath('$..book[?(@.`len` - 1)]', val='context')
+        assert list(x.value['author'] for x in m) ==  ['Nigel Rees', 'Evelyn Waugh', 'Herman Melville', 'J. R. R. Tolkien']
         # the last book in order. #2
         m = u.jsonPath('$..book[-1:]', val='full')
         assert [x[1]['author'] for x in m] == ['J. R. R. Tolkien']

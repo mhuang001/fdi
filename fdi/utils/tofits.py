@@ -600,20 +600,31 @@ def write_to_file(p, fn, dct=None, ignore_type_error=False, this_fits=None, inde
             with lock:
                 with open(sp, 'wb') as prodf:
                     p.writeto(prodf)
-        else:
-            lock = FileLock(os.path.join('/tmp',f'{sp}.lock'))
+        elif 1: 
+            lock = FileLock(f'/tmp{sp}.lock')
             with lock:
-                with open(sp, 'w+') as prodf:
+                with open(sp, 'w') as prodf:
+                    # JSON
                     prodf.write(serialize(p, indent=indent))
             # logger.info(f'Cannot save {p.__class__} to FITS.')
             # cmd line
             if _p:
                 _sp = os.path.splitext(sp)[0] + '.fit'
-                lock = FileLock(f'/tmp/{_sp}.lock')
+                #__import__("pdb").set_trace()
+                lock = FileLock(f'/tmp{sp}.lock')
                 with lock:
                     with open(_sp, 'wb') as prodf:
                         prodf.write(_p)
-
+        else:
+            with open(sp, 'w') as prodf:
+                    # JSON
+                    prodf.write(serialize(p, indent=indent))
+            if _p:
+                _sp = os.path.splitext(sp)[0] + '.fit'
+                with open(_sp, 'wb') as prodf:
+                    prodf.write(_p)
+        
+            
     except TypeError as e:
         if ignore_type_error:
             return sp
